@@ -2,8 +2,8 @@ import { gql, GraphQLClient } from "graphql-request";
 import type { AllPostsData, PostData } from "./schema";
 
 export const getClient = () => {
-  return new GraphQLClient("https://gql.hashnode.com")
-}
+  return new GraphQLClient("https://gql.hashnode.com");
+};
 
 const myHashnodeURL = "akoskm.hashnode.dev";
 
@@ -47,12 +47,11 @@ export const getAllPosts = async () => {
           }
         }
       }
-    `
+    `,
   );
 
   return allPosts;
 };
-
 
 export const getPost = async (slug: string) => {
   const client = getClient();
@@ -85,7 +84,7 @@ export const getPost = async (slug: string) => {
         }
       }
     `,
-    { slug: slug }
+    { slug: slug },
   );
 
   return data.publication.post;

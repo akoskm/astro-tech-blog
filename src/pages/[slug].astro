@@ -1,21 +1,20 @@
 ---
-import { AppConfig } from '@/utils/AppConfig';
-import Base from '@/layouts/Base.astro';
-import PostHeader from '@/components/PostHeader.astro';
-import PostContent from '@/components/PostContent.astro';
-import hljs from 'highlight.js/lib/core';
-import 'highlight.js/styles/base16/material-darker.min.css';
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
+import { AppConfig } from "@/utils/AppConfig";
+import Base from "@/layouts/Base.astro";
+import PostHeader from "@/components/PostHeader.astro";
+import PostContent from "@/components/PostContent.astro";
+import hljs from "highlight.js/lib/core";
+import "highlight.js/styles/base16/material-darker.min.css";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
 
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("typescript", typescript);
 
 const { description } = AppConfig;
 
-import { getAllPosts, getPost } from '../lib/client';
-import {Post} from '@/lib/schema';
-
+import { getAllPosts, getPost } from "../lib/client";
+import { Post } from "@/lib/schema";
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -23,8 +22,8 @@ export async function getStaticPaths() {
   return allPosts.map((post: { node: Post }) => {
     return {
       params: { slug: post.node.slug },
-    }
-  })
+    };
+  });
 }
 const { slug } = Astro.params;
 const frontmatter = await getPost(slug);
@@ -32,16 +31,15 @@ console.log(frontmatter);
 ---
 
 <Base head={{ title: frontmatter.title, description }}>
-	<div class="mx-auto w-full max-w-screen-md">
-		<PostHeader
-			title={frontmatter.title}
-			author={frontmatter.author}
-			tags={frontmatter.tags}
-			minutesRead={frontmatter.minutesRead}
-			pubDate={frontmatter.pubDate}
-			img={{ src: frontmatter.coverImage.url, alt: frontmatter.coverImage.alt }}
-		/>
-		<PostContent content={frontmatter.content.html} />
-	</div>
+  <div class="mx-auto w-full max-w-screen-md">
+    <PostHeader
+      title={frontmatter.title}
+      author={frontmatter.author}
+      tags={frontmatter.tags}
+      minutesRead={frontmatter.minutesRead}
+      pubDate={frontmatter.pubDate}
+      img={{ src: frontmatter.coverImage.url, alt: frontmatter.coverImage.alt }}
+    />
+    <PostContent content={frontmatter.content.html} />
+  </div>
 </Base>
-

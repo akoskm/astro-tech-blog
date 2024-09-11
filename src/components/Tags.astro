@@ -1,23 +1,23 @@
 ---
-import type { Tag } from '@/lib/schema';
+import type { Tag } from "@/lib/schema";
 
 interface Props {
-	tags: Tag[];
-	withHref?: boolean;
+  tags: Tag[];
+  withHref?: boolean;
 }
 
 const { tags, withHref } = Astro.props;
 ---
 
 <div class="flex flex-wrap">
-	{
-		tags?.map((tag) => {
-			const element = (
-				<span class="mb-2 mr-2 rounded-xl bg-stone-600 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-stone-500">
-					#{tag.name}
-				</span>
-			);
-			return withHref ? <a href={`/tags/${tag.slug}`}>{element}</a> : element;
-		})
-	}
+  {
+    tags?.map((tag) => {
+      const element = (
+        <span class="mb-2 mr-2 rounded-xl bg-stone-600 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-stone-500">
+          #{tag.name}
+        </span>
+      );
+      return withHref ? <a href={`/tags/${tag.slug}`}>{element}</a> : element;
+    })
+  }
 </div>

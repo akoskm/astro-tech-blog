@@ -17,7 +17,7 @@ Unlock a seamless blend of aesthetics and functionality to share your unique voi
 
 ## 💻 Showcase
 
-![showcase](/public/showcase.png 'AstroPress - Tech Blog Template')
+![showcase](/public/showcase.png "AstroPress - Tech Blog Template")
 
 ## 📦 Template Integrations
 
@@ -60,7 +60,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
-
 ## ❤️ Helping out
 
 If you find that something isn't working right then I'm always happy to hear it to improve this starter! You can contribute in many ways and forms. Let me know by either:
@@ -71,4 +70,5 @@ If you find that something isn't working right then I'm always happy to hear it 
 4. [Buying me a coffee!](https://www.buymeacoffee.com/nicdun)
 
 ## ☕ Thank you!
+
 A big thank you to the creators of the awesome Astro static site generator and to all using this starter to make the web a bit more accessible for all people around the world :)

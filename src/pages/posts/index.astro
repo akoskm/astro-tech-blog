@@ -1,11 +1,11 @@
 ---
-import { AppConfig } from '@/utils/AppConfig';
-import Base from '@/layouts/Base.astro';
-import Section from '@/components/Section.astro';
-import Card from '@/components/Card.astro';
-import Heading from '@/components/Heading.astro';
-import { getAllPosts } from '@/lib/client';
-import { Post } from '@/lib/schema';
+import { AppConfig } from "@/utils/AppConfig";
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/Card.astro";
+import Heading from "@/components/Heading.astro";
+import { getAllPosts } from "@/lib/client";
+import { Post } from "@/lib/schema";
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -15,14 +15,14 @@ const allPosts = data.publication.posts.edges;
 ---
 
 <Base head={{ title, description }}>
-	<Section><Heading title="Posts" /></Section>
-	<Section>
-		{
-			allPosts.map((post: Post) => (
-				<div class="mb-4 basis-1 last:mb-0">
-					<Card post={post.node} />
-				</div>
-			))
-		}
-	</Section>
+  <Section><Heading title="Posts" /></Section>
+  <Section>
+    {
+      allPosts.map((post: Post) => (
+        <div class="mb-4 basis-1 last:mb-0">
+          <Card post={post.node} />
+        </div>
+      ))
+    }
+  </Section>
 </Base>

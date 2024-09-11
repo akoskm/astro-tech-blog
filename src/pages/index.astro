@@ -1,9 +1,9 @@
 ---
-import { AppConfig } from '@/utils/AppConfig';
-import Base from '@/layouts/Base.astro';
-import Hero from '@/components/Hero.astro';
-import LatestPosts from '@/components/LatestPosts.astro';
-import {getAllPosts} from '@/lib/client';
+import { AppConfig } from "@/utils/AppConfig";
+import Base from "@/layouts/Base.astro";
+import Hero from "@/components/Hero.astro";
+import LatestPosts from "@/components/LatestPosts.astro";
+import { getAllPosts } from "@/lib/client";
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -13,6 +13,6 @@ const allPosts = data.publication.posts.edges.slice(0, 3);
 ---
 
 <Base head={{ title, description }}>
-	<Hero />
-	<LatestPosts posts={allPosts} />
+  <Hero />
+  <LatestPosts posts={allPosts} />
 </Base>

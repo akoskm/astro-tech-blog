@@ -1,7 +1,6 @@
 ---
-import {Post} from '@/lib/schema';
-import { getAllPosts, getPost } from '../../lib/client';
-
+import { Post } from "@/lib/schema";
+import { getAllPosts, getPost } from "../../lib/client";
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -9,24 +8,24 @@ export async function getStaticPaths() {
   return allPosts.map((post: { node: Post }) => {
     return {
       params: { slug: post.node.slug },
-    }
-  })
+    };
+  });
 }
 const { slug } = Astro.params;
 const post = await getPost(slug);
-
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-    <head>
-        <title>{post.title}</title>
-    </head>
-    <body>
-        <img src={post.coverImage.url} alt={post.title} />
+  <head>
+    <title>{post.title}</title>
+  </head>
+  <body>
+    <img src={post.coverImage.url} alt={post.title} />
 
-        <h1>{post.title}</h1>
-        <p>{post.readTimeInMinutes} min read</p>
+    <h1>{post.title}</h1>
+    <p>{post.readTimeInMinutes} min read</p>
 
-        <Fragment set:html={post.content.html} />
-    </body>
+    <Fragment set:html={post.content.html} />
+  </body>
 </html>
