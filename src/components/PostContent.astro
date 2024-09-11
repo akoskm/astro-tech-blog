@@ -1,12 +1,22 @@
 ---
+// Using ES6 import syntax
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
 import Section from './Section.astro';
+
+// Then register the languages you need
+hljs.registerLanguage('lang-javascript', javascript);
+hljs.registerLanguage('lang-typescript', typescript);
+
+const { content } = Astro.props;
 ---
 
 <Section>
 	<div
 		class="content prose mt-8 max-w-none text-base leading-8 text-black dark:prose-invert prose-code:rounded-lg prose-code:bg-stone-800 prose-code:p-1 prose-code:text-orange-600 prose-img:rounded-lg prose-img:shadow-xl dark:text-white prose-img:dark:shadow-stone-800"
+		set:html={content}
 	>
-		<slot />
 	</div>
 </Section>
 
@@ -44,8 +54,8 @@ import Section from './Section.astro';
 		border-left: 0.5rem solid rgba(209, 213, 219, 0.6) !important;
 		background-color: rgba(229, 231, 235, 0.05);
 	}
-	/** 
-     *  data-line-numbers will be enabled on markdown  
+	/**
+     *  data-line-numbers will be enabled on markdown
      *  with `showLineNumbers` meta string on it
      */
 	.content pre > code[data-line-numbers] {
@@ -67,9 +77,9 @@ import Section from './Section.astro';
 		text-align: right;
 	}
 
-	/** 
-     *  we'll need to adjust the space required 
-     *  the number depending on the number of digits 
+	/**
+     *  we'll need to adjust the space required
+     *  the number depending on the number of digits
      */
 	.content pre > code[data-line-numbers-max-digits='2'] > span[data-line]::before {
 		width: 2rem;

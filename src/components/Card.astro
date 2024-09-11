@@ -1,14 +1,15 @@
 ---
 import { formatDate } from '@/utils/data.util';
 import Tags from './Tags.astro';
+import {Post} from '@/lib/schema';
 interface Props {
-	post: any;
+	post: Post;
 }
 
 const { post } = Astro.props;
 ---
 
-<a href={post.url}>
+<a href={post.slug}>
 	<div
 		class="h-full rounded-2xl bg-stone-200/50 from-orange-900 via-amber-700 to-white p-[1px] text-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)] hover:bg-gradient-to-r dark:bg-gray-900"
 	>
@@ -25,14 +26,14 @@ const { post } = Astro.props;
 		>
 			<div class="flex-auto">
 				<div class="flex justify-between pb-4 text-xs">
-					<p>{formatDate(post.frontmatter.pubDate)}</p>
-					<p>{post.frontmatter.minutesRead}</p>
+					<p>{formatDate(post.publishedAt)}</p>
+					<p>read time: {post.readTimeInMinutes}m</p>
 				</div>
 
-				<p class="pb-4 text-lg font-bold">{post.frontmatter.title}</p>
+				<p class="pb-4 text-lg font-bold">{post.title}</p>
 
-				<Tags tags={post.frontmatter.tags} />
-				<p class="line-clamp-6 pt-4">{post.frontmatter.excerpt}</p>
+				<Tags tags={post.tags} />
+				<p class="line-clamp-6 pt-4">{post.seo.description}</p>
 			</div>
 			<p class="pt-4 underline">read more →</p>
 		</div>
