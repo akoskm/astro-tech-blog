@@ -1,20 +1,13 @@
 ---
 // Using ES6 import syntax
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
 import Section from './Section.astro';
-
-// Then register the languages you need
-hljs.registerLanguage('lang-javascript', javascript);
-hljs.registerLanguage('lang-typescript', typescript);
 
 const { content } = Astro.props;
 ---
 
 <Section>
 	<div
-		class="content prose mt-8 max-w-none text-base leading-8 text-black dark:prose-invert prose-code:rounded-lg prose-code:bg-stone-800 prose-code:p-1 prose-code:text-orange-600 prose-img:rounded-lg prose-img:shadow-xl dark:text-white prose-img:dark:shadow-stone-800"
+		class="content prose mt-8 max-w-none text-base leading-8 text-black dark:prose-invert prose-code:rounded-lg prose-code:p-1 prose-code:text-orange-600 prose-img:rounded-lg prose-img:shadow-xl dark:text-white prose-img:dark:shadow-stone-800"
 		set:html={content}
 	>
 	</div>
@@ -25,6 +18,7 @@ const { content } = Astro.props;
 		background-color: #cdc8ff0d;
 		border-radius: 0.5rem;
 		font-size: 0.9rem;
+		margin-bottom: 1.2rem;
 	}
 
 	.content code {
